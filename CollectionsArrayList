@@ -1,0 +1,235 @@
+
+package collections;
+import java.util.*; 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;  
+
+public class CollectionArrayList {
+
+	 //ArrayList
+	 public static void main(String args[]){  
+	  ArrayList<String> list=new ArrayList<String>();
+	      list.add("Syed");
+	      list.add("Ahsan");    
+	      list.add("Masood");    
+	      	      
+	      System.out.println(list);  
+	 }  
+	 
+	 
+	 
+	 //Sorting ArrayList
+	 public static void main1(String args[])   
+	 {   
+	 
+	 ArrayList<String> list = new ArrayList<String>();   
+	 
+	 list.add("Volkswagen");     
+	 list.add("Porsche");   
+	 list.add("Mercedes-Benz");   
+	 list.add("Audi");   
+	 list.add("Rolls-Royce");  
+	 list.add("BMW");  
+	 
+	 System.out.println("Before Sorting: "+ list);   
+	 
+	 Collections.sort(list);   
+	 
+	 System.out.println("After Sorting: "+ list);   
+	 }  
+	 
+	 
+	 
+	 //Searching ArrayList
+	 public static void main2(String[] args)
+	    {
+	        ArrayList<Integer> arr = new ArrayList<Integer>();
+	        
+	        arr.add(5);
+	        arr.add(10);
+	        arr.add(15);
+	        arr.add(20);
+	        arr.add(25);
+	        arr.add(30);
+	        arr.add(35); 
+	        
+	        int val = 10; 
+	        
+	        System.out.println("The elements of the arraylist are: "+arr);
+	        
+	        int result = Collections.CollectionArrayList(arr,val);
+	        
+	        if (result == -1) 
+	            System.out.println("Element not present"); 
+	        else
+	            System.out.println("The Element " + val + " is found at "
+	                               + "index " + result); 
+	    } 
+	 
+	 
+	 
+	 
+	 //Converting Array into ArrayList
+	 public static void main3(String args[]) {
+	      String[] array = {"a", "b", "c", "d", "e"};
+
+	      List<String> list = Arrays.asList(array);          
+	      System.out.println(list);
+
+	      List<String> list1 = new ArrayList<String>();
+	      Collections.addAll(list1, array);
+	      System.out.println(list1);
+
+	      List<String> list2 = new ArrayList<String>();
+	      for(String text:array) {
+	         list2.add(text);
+	      }
+	      System.out.println(list2);
+	   }  
+	  
+	 
+	 
+	 //Converting ArrayList into Array
+	 public static void main4(String[] args) {
+	        List<Integer> list = new ArrayList<>();
+
+	        list.add(5);
+	        list.add(10);
+	        list.add(15);
+
+	        Integer[] array = list.toArray(new Integer[0]);
+
+	        for (Integer n : array) {
+	            System.out.println(n);
+	        }
+	    }
+	 
+	 
+	 
+	 //Converting ArrayList into sets
+	 public static void main5(String[] args)
+	    {
+		 
+	        List<String> aList = Arrays.asList("Syed", "Ahsan", "Masood");
+	  
+	        Set<String> hSet = new HashSet<String>();
+	        for (String x : aList)
+	            hSet.add(x);
+	  
+	        System.out.println("Created HashSet is");
+	        for (String x : hSet)
+	            System.out.println(x);
+	 
+	    }
+	 
+	 
+	 
+	 
+	 //Converting ArrayList into Hashmap
+	 public static void main6(String[] args)
+	    {
+	        
+	        HashMap<String, Integer> map
+	            = new HashMap<>();
+	
+	        map.put("Ahsan", 23);
+	        map.put("sachin", 30);
+	        map.put("vaibhav", 20);
+	 
+	        Set<String> keySet = map.keySet();
+
+	        ArrayList<String> listOfKeys
+	            = new ArrayList<String>(keySet);
+	
+	        Collection<Integer> values = map.values();
+	  
+	        ArrayList<Integer> listOfValues
+	            = new ArrayList<>(values);
+	  
+	        System.out.println("The Keys of the Map are "
+	                           + listOfKeys);
+	  
+	        System.out.println("The Values of the Map are "
+	                           + listOfValues);
+	    }
+	 
+	 
+	 
+	 
+	 //Priority Queue
+	 public static void main7(String args[])
+	    {
+	        PriorityQueue<Integer> pQueue = new PriorityQueue<Integer>();
+	 
+	        pQueue.add(10);
+	        pQueue.add(20);
+	        pQueue.add(15);
+	 
+	        System.out.println(pQueue.peek());
+	 
+	        System.out.println(pQueue.poll());
+	 
+	        System.out.println(pQueue.peek());
+	    }
+	 
+	 
+	 
+	 
+	
+	 //Generic 
+	 public static void main8(String args[]){  
+		 ArrayList<String> list=new ArrayList<String>();  
+		 list.add("rahul");  
+		 list.add("jai");  
+		 //list.add(32);  
+		   
+		 String s=list.get(1);
+		 System.out.println("element is: "+s);  
+		   
+		 Iterator<String> itr=list.iterator();  
+		 while(itr.hasNext()){  
+		 System.out.println(itr.next());  
+		 }  
+		 }  
+	 
+	 
+	 
+	 
+	 //Stream
+	 public static void main9(String args[])
+	  {
+	  
+	    List<Integer> number = Arrays.asList(2,3,4,5);
+	  
+	    List<Integer> square = number.stream().map(x -> x*x).
+	                           collect(Collectors.toList());
+	    System.out.println(square);
+	  
+	    List<String> names =
+	                Arrays.asList("Reflection","Collection","Stream");
+	  
+	    List<String> result = names.stream().filter(s->s.startsWith("S")).
+	                          collect(Collectors.toList());
+	    System.out.println(result);
+	  
+	    List<String> show =
+	            names.stream().sorted().collect(Collectors.toList());
+	    System.out.println(show);
+	  
+	    List<Integer> numbers = Arrays.asList(2,3,4,5,2);
+	  
+	    Set<Integer> squareSet =
+	         numbers.stream().map(x->x*x).collect(Collectors.toSet());
+	    System.out.println(squareSet);
+	  
+	    number.stream().map(x->x*x).forEach(y->System.out.println(y));
+	  
+	    int even =
+	       number.stream().filter(x->x%2==0).reduce(0,(ans,i)-> ans+i);
+	  
+	    System.out.println(even);
+	  }
+}
